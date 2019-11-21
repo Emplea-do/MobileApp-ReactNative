@@ -26,7 +26,7 @@ const fetchJobDetailById = jobId => {
     method: 'get',
   };
 
-  return axios.request(params);
+  return API.request(params);
 };
 
 export const jobService = {fetchAllJobs, fetchJobDetailById};

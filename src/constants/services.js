@@ -1,6 +1,6 @@
 const jobUrl = {
-  getAll: `/jobs`,
-  getDetailById: `/detail`,
+  getAll: '/jobs',
+  getDetailById: '/detail',
 };
 
 export const SERVICE = {

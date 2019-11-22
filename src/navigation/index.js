@@ -9,7 +9,7 @@ import {SearchStack} from './search.stack';
 import {ProfileStack} from './profile.stack';
 
 import SCREENS from '../constants/screens';
-import {colors} from '../theme';
+import theme from '../theme';
 
 const App = createBottomTabNavigator(
   {
@@ -41,8 +41,8 @@ const App = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: colors.primary,
-      inactiveTintColor: colors.gray,
+      activeTintColor: theme.colors.primary,
+      inactiveTintColor: theme.colors.gray,
     },
   },
 );

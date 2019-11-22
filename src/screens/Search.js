@@ -23,7 +23,7 @@ const SearchScreen = () => {
       <View style={styles.searchBox}>
         <TextInput
           style={styles.textInputSearch}
-          underlineColorAndroid={'#12bac3'}
+          underlineColorAndroid={colors.input}
           placeholder="Keywords"
         />
       </View>

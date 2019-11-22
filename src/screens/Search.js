@@ -1,102 +1,130 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Switch} from 'react-native-switch';
+import {AppHeader, AppText} from '../components';
+import {colors} from '../theme';
 
-export default class SearchScreen extends React.Component {
-  state = {
-    switchValue: false,
-  };
+const SearchScreen = () => {
+  const [remoteOnly, setRemoteOnly] = useState(false);
 
-  render() {
-    return (
-      <KeyboardAvoidingView behavior="padding">
-        <Text style={styles.text}>
-          Hola, ¿Qué tipo de trabajo estas buscando?
-        </Text>
+  return (
+    <KeyboardAvoidingView style={styles.container} behavior="position">
+      <AppHeader style={styles.header}>
+        Hola, ¿Qué tipo de trabajo estas buscando?
+      </AppHeader>
+      <View style={styles.searchBox}>
         <TextInput
           style={styles.textInputSearch}
           underlineColorAndroid={'#12bac3'}
           placeholder="Keywords"
         />
+      </View>
 
-        <Text style={styles.textCategory}>Buscar por Categoría</Text>
-        <View style={{flexDirection: 'row'}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.textJobsRemote}>
-              Buscar solo empleos remotos
-            </Text>
-          </View>
-          <View style={styles.swithJobsRemote}>
-            <Switch
-              value={this.state.switchValue}
-              onValueChange={switchValue => this.setState({switchValue})}
-              backgroundActive={'#12bac3'}
-              backgroundInactive={'gray'}
-            />
-          </View>
-        </View>
+      <AppHeader style={styles.textCategory}>Buscar por Categoría</AppHeader>
 
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity>
-            <Text style={styles.buttonText}>Buscar</Text>
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
-    );
-  }
-}
+      <View style={styles.categoryCards}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {new Array(6).fill('').map((elem, i) => (
+            <View style={styles.card} key={i}>
+              <AppText>card</AppText>
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+
+      <View style={styles.swithJobsRemote}>
+        <AppText style={styles.textJobsRemote}>
+          Buscar solo empleos remotos
+        </AppText>
+        <Switch
+          value={remoteOnly}
+          onValueChange={setRemoteOnly}
+          backgroundActive={'#12bac3'}
+          backgroundInactive={'gray'}
+          circleBorderWidth={0}
+          barHeight={32}
+          circleSize={30}
+          switchLeftPx={2.2}
+          switchRightPx={2.2}
+        />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity>
+          <Text style={styles.buttonText}>Buscar</Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 5,
+    paddingLeft: 20,
+    paddingTop: 60,
   },
-  text: {
+  header: {
     marginTop: 5,
-    marginLeft: 20,
+    paddingBottom: 30,
     fontSize: 30,
-    fontWeight: 'bold',
+    letterSpacing: 0.29,
   },
   textCategory: {
+    paddingTop: 20,
+    fontSize: 20,
+  },
+  categoryCards: {
+    flexDirection: 'row',
+  },
+  card: {
+    width: 110,
+    height: 110,
+    borderRadius: 4,
+    marginLeft: 5,
     marginTop: 20,
-    marginLeft: 20,
-    fontSize: 25,
-    fontWeight: 'bold',
+    marginBottom: 50,
+    backgroundColor: colors.cardBackground,
+  },
+  searchBox: {
+    marginRight: 20,
   },
   textJobsRemote: {
-    marginTop: 0,
-    marginLeft: 20,
-    fontSize: 20,
+    fontSize: 18,
     justifyContent: 'flex-start',
+    fontFamily: 'SFProDisplay-Medium',
   },
   swithJobsRemote: {
-    justifyContent: 'flex-end',
-    marginRight: 50,
+    paddingRight: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 40,
   },
   textInputSearch: {
-    marginLeft: 20,
-    marginEnd: 45,
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 20,
+    paddingRight: 20,
+    fontFamily: 'SFProDisplay-Medium',
   },
   buttonContainer: {
+    marginRight: 20,
     backgroundColor: '#12bac3',
-    marginTop: 150,
-    marginHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 3,
   },
   buttonText: {
     textAlign: 'center',
     color: '#fff',
-    fontWeight: 'bold',
+    fontFamily: 'SFProDisplay-Bold',
     fontSize: 30,
   },
 });
+
+export default SearchScreen;

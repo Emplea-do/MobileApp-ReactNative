@@ -1,5 +1,7 @@
 export default {
   primary: '#14b1bb',
   white: '#ffffff',
-  gray: 'gray',
+  background: '#f8f8f8',
+  cardBackground: '#fff',
+  gray: '#9eabba',
 };

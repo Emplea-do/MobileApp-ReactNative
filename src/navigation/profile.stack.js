@@ -15,5 +15,10 @@ export const ProfileStack = createStackNavigator(
       headerTintColor: colors.white,
       title: SCREENS.Profile.title,
     },
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: colors.background,
+      height: '100%',
+    },
   },
 );

@@ -37,13 +37,26 @@ const App = createBottomTabNavigator(
       tabBarIcon: ({tintColor}) => {
         const {routeName} = navigation.state;
         let iconName = SCREENS[routeName].icon;
-        return <Ionicons name={iconName} size={25} color={tintColor} />;
+        return <Ionicons name={iconName} size={35} color={tintColor} />;
       },
     }),
     tabBarOptions: {
       activeTintColor: colors.primary,
       inactiveTintColor: colors.gray,
+      style: {
+        borderTopWidth: 0,
+        paddingBottom: 10,
+        backgroundColor: colors.background,
+      },
+      labelStyle: {
+        fontFamily: 'SFProDisplay-Medium',
+        letterSpacing: 0.8,
+        fontSize: 16,
+        marginTop: 20,
+      },
     },
+
+    initialRouteName: 'Search',
   },
 );
 

@@ -8,7 +8,7 @@ export default {
     icon: 'md-search',
   },
   Profile: {
-    title: 'Perfil',
+    title: 'Perfíl',
     icon: 'md-person',
   },
 };

@@ -15,5 +15,10 @@ export const SettingsStack = createStackNavigator(
       headerTintColor: colors.white,
       title: SCREENS.Settings.title,
     },
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: colors.background,
+      height: '100%',
+    },
   },
 );

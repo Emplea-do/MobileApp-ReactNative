@@ -18,7 +18,7 @@ const SearchScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="position">
       <AppHeader style={styles.header}>
-        Hola, ¿Qué tipo de trabajo estas buscando?
+        Hola, ¿Qué tipo de trabajo estás buscando?
       </AppHeader>
       <View style={styles.searchBox}>
         <TextInput

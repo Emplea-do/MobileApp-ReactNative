@@ -1,5 +1,5 @@
-import axios from 'axios';
-import SERVICE from '../constants/services';
+import {API} from '../utils';
+import {SERVICE} from '../constants';
 
 /**
  * Fetch all job available.
@@ -7,9 +7,12 @@ import SERVICE from '../constants/services';
  * @param {Object} QueryParams
  */
 const fetchAllJobs = ({pageNumber = 0, pageSize = 15} = {}) => {
-  return axios.get(
-    `${SERVICE.Api.JobUrl.getAll}/?Page=${pageNumber}&PageSize=${pageSize}`,
-  );
+  const params = {
+    url: `${SERVICE.jobUrl}/?Page=${pageNumber}&PageSize=${pageSize}`,
+    method: 'get',
+  };
+
+  return API.request(params);
 };
 
 /**
@@ -18,7 +21,12 @@ const fetchAllJobs = ({pageNumber = 0, pageSize = 15} = {}) => {
  * @param {Number} jobId
  */
 const fetchJobDetailById = jobId => {
-  return axios.get(`${SERVICE.Api.JobUrl.getDetailById}/${jobId}`);
+  const params = {
+    url: `${SERVICE.jobUrl.getDetailById}/${jobId}`,
+    method: 'get',
+  };
+
+  return API.request(params);
 };
 
-export {fetchAllJobs, fetchJobDetailById};
+export const jobService = {fetchAllJobs, fetchJobDetailById};

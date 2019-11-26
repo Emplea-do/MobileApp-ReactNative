@@ -1,7 +1,7 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import Settings from '../screens/Settings';
 import SCREENS from '../constants/screens';
-import {colors} from '../theme';
+import theme from '../theme';
 
 export const SettingsStack = createStackNavigator(
   {
@@ -10,9 +10,9 @@ export const SettingsStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: colors.primary,
+        backgroundColor: theme.colors.primary,
       },
-      headerTintColor: colors.white,
+      headerTintColor: theme.colors.white,
       title: SCREENS.Settings.title,
     },
   },

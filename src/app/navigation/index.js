@@ -8,8 +8,8 @@ import {SettingsStack} from './settings.stack';
 import {SearchStack} from './search.stack';
 import {ProfileStack} from './profile.stack';
 
+import theme from '../theme';
 import {SCREENS} from '../constants';
-import {colors} from '../theme';
 
 const App = createBottomTabNavigator(
   {
@@ -41,8 +41,8 @@ const App = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: colors.primary,
-      inactiveTintColor: colors.gray,
+      activeTintColor: theme.colors.primary,
+      inactiveTintColor: theme.colors.gray,
     },
   },
 );

@@ -1,3 +1,5 @@
-import colors from './colors';
+import {defaultColors} from './colors';
 
-export {colors};
+export const defaultTheme = {colors: defaultColors};
+
+export default defaultTheme;

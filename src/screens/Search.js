@@ -10,7 +10,7 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Switch} from 'react-native-switch';
 import {AppHeader, AppText} from '../components';
-import {colors} from '../theme';
+import theme from '../theme';
 
 const SearchScreen = () => {
   const [remoteOnly, setRemoteOnly] = useState(false);
@@ -23,7 +23,7 @@ const SearchScreen = () => {
       <View style={styles.searchBox}>
         <TextInput
           style={styles.textInputSearch}
-          underlineColorAndroid={colors.input}
+          underlineColorAndroid={theme.colors.input}
           placeholder="Keywords"
         />
       </View>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 20,
     marginBottom: 50,
-    backgroundColor: colors.cardBackground,
+    backgroundColor: theme.colors.cardBackground,
   },
   searchBox: {
     marginRight: 20,

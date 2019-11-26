@@ -8,8 +8,8 @@ import {SettingsStack} from './settings.stack';
 import {SearchStack} from './search.stack';
 import {ProfileStack} from './profile.stack';
 
-import SCREENS from '../constants/screens';
 import theme from '../theme';
+import {SCREENS} from '../constants';
 
 const App = createBottomTabNavigator(
   {

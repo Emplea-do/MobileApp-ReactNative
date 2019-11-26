@@ -1,4 +1,4 @@
-export default {
+export const SCREENS = {
   Settings: {
     title: 'Ajustes',
     icon: 'md-settings',

@@ -15,5 +15,10 @@ export const SearchStack = createStackNavigator(
       headerTintColor: theme.colors.white,
       title: SCREENS.Search.title,
     },
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: theme.colors.background,
+      height: '100%',
+    },
   },
 );

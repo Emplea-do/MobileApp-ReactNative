@@ -1,5 +1,5 @@
 import {AppRegistry} from 'react-native';
-import App from './app/App';
+import App from './src/App';
 import {name as appName} from './app.json';
 import axios from 'axios';
 import {API_SUBSCRIPTION_KEY} from 'react-native-dotenv';

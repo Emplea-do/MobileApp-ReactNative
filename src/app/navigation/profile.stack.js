@@ -1,6 +1,6 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import Profile from '../screens/Profile';
-import SCREENS from '../constants/screens';
+import {SCREENS} from '../constants/screens';
 import theme from '../theme';
 
 export const ProfileStack = createStackNavigator(

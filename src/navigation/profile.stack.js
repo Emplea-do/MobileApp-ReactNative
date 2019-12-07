@@ -1,11 +1,11 @@
 import {createStackNavigator} from 'react-navigation-stack';
-import Search from '../screens/Search';
-import SCREENS from '../constants/screens';
+import Profile from '../screens/Profile';
+import {SCREENS} from '../constants/screens';
 import theme from '../theme';
 
-export const SearchStack = createStackNavigator(
+export const ProfileStack = createStackNavigator(
   {
-    Search: {screen: Search},
+    Profile: {screen: Profile},
   },
   {
     defaultNavigationOptions: {
@@ -13,7 +13,7 @@ export const SearchStack = createStackNavigator(
         backgroundColor: theme.colors.primary,
       },
       headerTintColor: theme.colors.white,
-      title: SCREENS.Search.title,
+      title: SCREENS.Profile.title,
     },
     headerMode: 'none',
     cardStyle: {

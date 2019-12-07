@@ -1,11 +1,11 @@
 import {createStackNavigator} from 'react-navigation-stack';
-import Profile from '../screens/Profile';
-import SCREENS from '../constants/screens';
+import Settings from '../screens/Settings';
+import {SCREENS} from '../constants/screens';
 import theme from '../theme';
 
-export const ProfileStack = createStackNavigator(
+export const SettingsStack = createStackNavigator(
   {
-    Profile: {screen: Profile},
+    Settings: {screen: Settings},
   },
   {
     defaultNavigationOptions: {
@@ -13,7 +13,7 @@ export const ProfileStack = createStackNavigator(
         backgroundColor: theme.colors.primary,
       },
       headerTintColor: theme.colors.white,
-      title: SCREENS.Profile.title,
+      title: SCREENS.Settings.title,
     },
     headerMode: 'none',
     cardStyle: {

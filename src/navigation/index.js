@@ -1,15 +1,15 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {createAppContainer} from 'react-navigation';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import {SettingsStack} from './settings.stack';
-import {SearchStack} from './search.stack';
-import {ProfileStack} from './profile.stack';
+import { SettingsStack } from './settings.stack';
+import { SearchStack } from './search.stack';
+import { ProfileStack } from './profile.stack';
 
 import theme from '../theme';
-import {SCREENS} from '../constants';
+import { SCREENS } from '../constants';
 
 const App = createBottomTabNavigator(
   {
@@ -33,9 +33,9 @@ const App = createBottomTabNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
-      tabBarIcon: ({tintColor}) => {
-        const {routeName} = navigation.state;
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ tintColor }) => {
+        const { routeName } = navigation.state;
         let iconName = SCREENS[routeName].icon;
         return <Ionicons name={iconName} size={35} color={tintColor} />;
       },

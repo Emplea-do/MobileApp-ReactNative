@@ -1,11 +1,14 @@
-import {createStackNavigator} from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 import Search from '../screens/Search';
-import {SCREENS} from '../constants/screens';
+import Listing from '../screens/Listing';
+
+import { SCREENS } from '../constants/screens';
 import theme from '../theme';
 
 export const SearchStack = createStackNavigator(
   {
-    Search: {screen: Search},
+    Search: { screen: Search },
+    Listing: { screen: Listing },
   },
   {
     defaultNavigationOptions: {

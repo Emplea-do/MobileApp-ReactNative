@@ -1,12 +1,12 @@
-import {API} from '../utils';
-import {SERVICE} from '../constants';
+import { API } from '../utils';
+import { SERVICE } from '../constants';
 
 /**
  * Fetch all job available.
  *
  * @param {Object} QueryParams
  */
-const fetchAllJobs = ({pageNumber = 0, pageSize = 15} = {}) => {
+const fetchAllJobs = ({ pageNumber = 0, pageSize = 15 } = {}) => {
   const params = {
     url: `${SERVICE.jobUrl}/?Page=${pageNumber}&PageSize=${pageSize}`,
     method: 'get',
@@ -29,4 +29,4 @@ const fetchJobDetailById = jobId => {
   return API.request(params);
 };
 
-export const jobService = {fetchAllJobs, fetchJobDetailById};
+export const jobService = { fetchAllJobs, fetchJobDetailById };

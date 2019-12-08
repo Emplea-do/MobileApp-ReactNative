@@ -4,4 +4,3 @@ ENV_WHITELIST=${ENV_WHITELIST:-"^RN_"}
 set | egrep -e $ENV_WHITELIST | sed 's/^RN_//g' > .env
 
 echo $PWD
-ls

@@ -13,12 +13,12 @@ export const SearchStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: theme.colors.primary,
+        backgroundColor: theme.colors.white,
       },
-      headerTintColor: theme.colors.white,
+      headerTintColor: theme.colors.black,
       title: SCREENS.Search.title,
     },
-    headerMode: 'none',
+
     cardStyle: {
       backgroundColor: theme.colors.background,
       height: '100%',

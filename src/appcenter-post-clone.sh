@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-echo $PWD
-ls
+BASEDIR=$(dirname "$0")
+echo "$BASEDIR"

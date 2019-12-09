@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import Search from '../screens/Search';
+import Search from '../screens/Search/index';
 import Listing from '../screens/Listing';
 
 import { SCREENS } from '../constants/screens';

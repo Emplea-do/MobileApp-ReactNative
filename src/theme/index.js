@@ -1,5 +1,5 @@
-import {defaultColors} from './colors';
+import { defaultColors } from './colors';
 
-export const defaultTheme = {colors: defaultColors};
+export const defaultTheme = { colors: defaultColors };
 
 export default defaultTheme;

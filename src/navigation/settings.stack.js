@@ -1,11 +1,11 @@
-import {createStackNavigator} from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 import Settings from '../screens/Settings';
-import {SCREENS} from '../constants/screens';
+import { SCREENS } from '../constants/screens';
 import theme from '../theme';
 
 export const SettingsStack = createStackNavigator(
   {
-    Settings: {screen: Settings},
+    Settings: { screen: Settings },
   },
   {
     defaultNavigationOptions: {

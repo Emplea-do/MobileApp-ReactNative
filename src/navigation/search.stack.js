@@ -18,7 +18,6 @@ export const SearchStack = createStackNavigator(
       headerTintColor: theme.colors.black,
       title: SCREENS.Search.title,
     },
-
     cardStyle: {
       backgroundColor: theme.colors.background,
       height: '100%',

@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint .",
     "pretty": "prettier --check 'src/**/*.js'",
-    "pretty:fix": "prettier --check 'src/**/*.js' --write"
+    "pretty:fix": "prettier --check 'src/**/*.js' --write" 
   },
   "dependencies": {
     "axios": "^0.19.0",

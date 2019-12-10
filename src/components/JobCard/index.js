@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Badge } from '../Badge';
 import {
@@ -16,7 +16,7 @@ import {
   TitleContainer,
 } from './styles';
 
-export const JobCard = props => {
+function JobCard({ item }) {
   const {
     Title: title,
     CompanyName,
@@ -24,7 +24,7 @@ export const JobCard = props => {
     IsRemote,
     JobType,
     Location,
-  } = props;
+  } = item;
 
   return (
     <Card>
@@ -63,4 +63,6 @@ export const JobCard = props => {
       </Row>
     </Card>
   );
-};
+}
+
+export default memo(JobCard);

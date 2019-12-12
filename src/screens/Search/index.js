@@ -37,7 +37,7 @@ const SearchScreen = () => {
           placeholder="Keywords"
           onChangeText={text => setQuery(text)}
         />
-        <Ionicons name="md-search" size={28} />
+        <Ionicons onPress={search} name="md-search" size={28} />
       </SearchBox>
       <Subtitle>Buscar por categoría</Subtitle>
       <CategoryList />
@@ -60,5 +60,10 @@ const SearchScreen = () => {
     </Container>
   );
 };
+
+SearchScreen.navigationOptions = () => ({
+  headerMode: 'none',
+  header: null,
+});
 
 export default SearchScreen;

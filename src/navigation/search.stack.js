@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import Search from '../screens/Search';
+import Search from '../screens/Search/index';
 import Listing from '../screens/Listing';
 
 import { SCREENS } from '../constants/screens';
@@ -13,12 +13,11 @@ export const SearchStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: theme.colors.primary,
+        backgroundColor: theme.colors.white,
       },
-      headerTintColor: theme.colors.white,
+      headerTintColor: theme.colors.black,
       title: SCREENS.Search.title,
     },
-    headerMode: 'none',
     cardStyle: {
       backgroundColor: theme.colors.background,
       height: '100%',

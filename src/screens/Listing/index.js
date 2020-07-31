@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container } from '../../components/Container';
 import { JobCard } from '../../components/JobCard';
 import { ResultsTitle, SearchResult } from './styles';
+import { RefreshControl } from 'react-native';
+
+import { API_SUBSCRIPTION_KEY } from 'react-native-dotenv';
+import API from './../../utils/api';
 
 export const results = [
   {
@@ -149,35 +153,112 @@ export const results = [
     HowToApply:
       '<p></p><p>Enviar fille detallando trabajos de integraciones con carta de referencia&nbsp; a:&nbsp; c.alonso@turinter.com</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n\r\n\r\n\r\n\r\n<br><p></p>',
   },
-  {
-    Link: '1330',
-    CompanyName: 'Wepsys SRL',
-    Title: 'Full Stack Developer',
-    JobType: 'Tiempo Completo',
-    Location: 'Santo Domingo, RD',
-    PublishedDate: '2019-12-04T19:49:21.597',
-    IsRemote: false,
-    ViewCount: 65,
-    Likes: 0,
-    CompanyLogoUrl: null,
-    Description: '<p>- FRONTEND DEVELOPER</p><p>- BACKEND DEVELOPER</p>',
-    HowToApply:
-      '<p>Enviar curriculum actualizado al correo rrhh@wepsys.com.do</p>',
-  },
 ];
 
-const ListingScreen = () => {
-  return (
-    <Container behavior="position">
-      <SearchResult>
-        <ResultsTitle>{results.length || 0} empleos disponibles</ResultsTitle>
-        {results.map(job => {
-          return <JobCard key={job.Link} {...job} />;
-        })}
-      </SearchResult>
-    </Container>
-  );
-};
+class ListingScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      isLoading: true,
+      pageNo: 1,
+      loadingMore: false,
+      isFetching: false,
+    };
+  }
+
+  componentDidMount() {
+    this.loadInitData();
+  }
+
+  loadInitData = () => {
+    const { pageNo } = this.state;
+
+    return fetch(`${API}jobs?page=${pageNo}&pageSize=10`, {
+      method: 'GET',
+      headers: { 'Ocp-Apim-Subscription-Key': API_SUBSCRIPTION_KEY },
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.setState((prevState, nextProps) => ({
+          data:
+            pageNo === 1
+              ? response.Jobs
+              : this.state.data.concat(response.Jobs),
+          loading: false,
+        }));
+
+        console.log('consulta Ejecutada exitosamente');
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+        console.log('consulta Finalizada exitosamente');
+      });
+  };
+
+  loadNextData = () => {
+    this.setState(
+      (prevState, nextProps) => ({
+        pageNo: prevState.pageNo + 1,
+        loadingMore: true,
+      }),
+      () => {
+        this.loadInitData();
+      },
+    );
+  };
+
+  resetData = () => {
+    fetch(`${API}jobs?page=1&pageSize=10`, {
+      method: 'GET',
+      headers: { 'Ocp-Apim-Subscription-Key': API_SUBSCRIPTION_KEY },
+    })
+      .then(response => response.json())
+      .then(response => {
+        // console.log(response)
+        this.setState({ data: response.Jobs });
+      })
+      .catch(error => {
+        console.error(error);
+      }),
+      () => {
+        this.loadInitData();
+      };
+
+    this.setState({ isFetching: false }, () => {
+      this.state.pageNo = 1;
+    });
+  };
+
+  render() {
+    const { data, isLoading, loadingMore, isFetching } = this.state;
+    return (
+      <Container behavior="position">
+        <SearchResult
+          onScrollEndDrag={this.loadNextData}
+          onEndReachedThreshold={10}
+          refreshControl={
+            <RefreshControl
+              refreshing={isFetching}
+              onRefresh={() => this.resetData()}
+            />
+          }>
+          <ResultsTitle>
+            {data.length ? data.length : 0} empleos disponibles
+          </ResultsTitle>
+          {/*<ResultsTitle>{results.length || 0} empleos disponibles</ResultsTitle>*/}
+          {data.map(job => {
+            return <JobCard key={job.Link} {...job} />;
+          })}
+        </SearchResult>
+      </Container>
+    );
+  }
+}
 
 ListingScreen.navigationOptions = screenProps => ({
   title: screenProps.navigation.getParam('query'),

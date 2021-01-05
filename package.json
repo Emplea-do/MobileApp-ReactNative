@@ -12,7 +12,7 @@
     "pretty:fix": "prettier --check 'src/**/*.js' --write"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "react": "16.9.0",
     "react-native": "0.61.4",
     "react-native-dotenv": "^0.2.0",

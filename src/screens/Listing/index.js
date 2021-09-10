@@ -3,11 +3,12 @@ import { Container } from '../../components/Container';
 import { JobCard } from '../../components/JobCard';
 import { ResultsTitle, SearchResult } from './styles';
 import { RefreshControl } from 'react-native';
-
+import {ScrollView,View,Text,SafeAreaView} from 'react-native';
 import { API_SUBSCRIPTION_KEY } from 'react-native-dotenv';
 import API from './../../utils/api';
 
-export const results = [
+
+/*export const results = [
   {
     Link: '1339',
     CompanyName: 'Encore',
@@ -153,7 +154,24 @@ export const results = [
     HowToApply:
       '<p></p><p>Enviar fille detallando trabajos de integraciones con carta de referencia&nbsp; a:&nbsp; c.alonso@turinter.com</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n\r\n\r\n\r\n\r\n<br><p></p>',
   },
+];*/
+
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
 ];
+
+
 
 class ListingScreen extends Component {
   constructor(props) {
@@ -238,7 +256,15 @@ class ListingScreen extends Component {
     const { data, isLoading, loadingMore, isFetching } = this.state;
     return (
       <Container behavior="position">
-        <SearchResult
+      <SafeAreaView>
+        <ScrollView 
+        onMomentumScrollEnd={this.loadNextData}
+        >
+        {data.map(job => {
+            return <JobCard key={job.Link} {...job} />;
+          })}
+
+          {/**  <SearchResult
           onScrollEndDrag={this.loadNextData}
           onEndReachedThreshold={10}
           refreshControl={
@@ -250,11 +276,12 @@ class ListingScreen extends Component {
           <ResultsTitle>
             {data.length ? data.length : 0} empleos disponibles
           </ResultsTitle>
-          {/*<ResultsTitle>{results.length || 0} empleos disponibles</ResultsTitle>*/}
-          {data.map(job => {
+          {/*<ResultsTitle>{results.length || 0} empleos disponibles</ResultsTitle>*/}{/* {data.map(job => {
             return <JobCard key={job.Link} {...job} />;
           })}
-        </SearchResult>
+        </SearchResult> */}
+   </ScrollView>
+      </SafeAreaView>
       </Container>
     );
   }
